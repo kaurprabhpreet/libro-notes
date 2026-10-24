@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:libro_notes/core/typography/app_typography.dart';
 import 'app_palette.dart';
 
 class AppTheme extends ThemeExtension<AppTheme> {
@@ -169,6 +170,17 @@ class AppTheme extends ThemeExtension<AppTheme> {
       colorScheme: scheme,
       scaffoldBackgroundColor: colors.canvasBg,
       dividerColor: colors.separator,
+      textTheme: TextTheme(
+        displayLarge: AppTypography.h1(),
+        headlineMedium: AppTypography.h2(),
+        titleLarge: AppTypography.h3(),
+        bodyLarge: AppTypography.bodyLarge(),
+        bodyMedium: AppTypography.bodyMed(),
+        labelSmall: AppTypography.bodyXs(),
+      ).apply(
+        bodyColor: colors.textPrimary,
+        displayColor: colors.textPrimary,
+      ),
       extensions: [colors],
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -181,6 +193,6 @@ class AppTheme extends ThemeExtension<AppTheme> {
   }
 }
 
-extension AppThemeExtension on BuildContext{
+extension AppThemeExtension on BuildContext {
   AppTheme get colors => Theme.of(this).extension<AppTheme>()!;
 }
